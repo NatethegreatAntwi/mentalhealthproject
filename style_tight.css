@@ -1,0 +1,153 @@
+
+/* BASE RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background: linear-gradient(145deg, #d0eafc, #f6f0ff);
+  overflow-x: hidden;
+  color: #2d2d2d;
+}
+
+/* SLIDE SECTION */
+.slide {
+  min-height: 100vh;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  scroll-snap-align: start;
+  position: relative;
+  transition: all 0.6s ease-in-out;
+  animation: floatUp 8s infinite ease-in-out;
+}
+
+/* BUBBLE-STYLE HEADINGS */
+.slide h2 {
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  animation: pulse 4s infinite ease-in-out;
+}
+
+/* TEXT BLOCK */
+.slide p,
+.slide ul,
+.slide blockquote {
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 1rem 1.5rem;
+  margin: 0.5rem auto;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.slide ul {
+  list-style: disc inside;
+}
+
+.slide blockquote {
+  font-style: italic;
+  color: #555;
+  border-left: 5px solid #bbb;
+}
+
+/* IMAGE STYLES */
+.slide img {
+  max-width: 90%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 25px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
+  animation: floatAlt 6s ease-in-out infinite;
+}
+
+/* FLOATING CIRCLES */
+.floating-circles span {
+  width: 60px;
+  height: 60px;
+  background: rgba(180, 235, 255, 0.4);
+  position: absolute;
+  border-radius: 50%;
+  animation: bubbleDrift 25s linear infinite;
+}
+
+/* FOOTER */
+footer {
+  padding: 1.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #333;
+  box-shadow: inset 0 1px 5px rgba(0,0,0,0.1);
+}
+
+/* SCROLL REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ANIMATIONS */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes floatAlt {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes bubbleDrift {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-100vh) rotate(180deg);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateY(0) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+/* RESPONSIVE STYLING */
+@media (max-width: 768px) {
+  .slide h2 {
+    font-size: 1.8rem;
+  }
+  .slide p, .slide ul, .slide blockquote {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+  .slide img {
+    max-width: 100%;
+  }
+}
